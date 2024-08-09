@@ -62,6 +62,11 @@ function vaiParaFinalDoChat() {
     chat.scrollTop = chat.scrollHeight;
 }
 
-function limparConversa() {
-    location.reload();
+async function limparConversa() {
+    try {
+        await fetch(env.API_URL + '/chat/clean');
+        location.reload();
+    } catch (error) {
+        alert(error);
+    }
 }
